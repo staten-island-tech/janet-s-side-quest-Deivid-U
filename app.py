@@ -28,14 +28,37 @@ def row_average(data):
         location = row[0]
         sales = list(map(int, row[1:]))
         row_averages[location] = round(sum(sales) / len(sales), 2)
-
     return row_averages
 
 averages = row_average(data)
-print(averages)
+""" print(averages) """
 
 def sort_profit(data):
     ordered_list = {}
-    
+    ordered_list = sorted(averages.items(), key=lambda x: x[1], reverse=True)
+    return ordered_list
+
+sorted_profits = dict(sort_profit(data))
+
+""" print(sorted_profits) """
+
+def universal_average(data):
+    totals = {}
+    days = {}
+    for row in data[1:]:
+        location = row[0]
+        totals[location] = sum(row[1:])
+        days[location] = len(row[1:])
+    universal_average = sum(totals.values()) / sum(days.values())
+    return universal_average
+
+all_stores_average = universal_average(data)
+
+""" print(universal_average(data)) """
+
+def danger(averages, uni_average):
+    for location in averages:
+        if location.value < 0.8 
+
 
 

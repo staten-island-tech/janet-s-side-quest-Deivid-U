@@ -31,6 +31,7 @@ def row_average(data):
     return row_averages
 
 averages = row_average(data)
+
 """ print(averages) """
 
 def sort_profit(data):
@@ -57,8 +58,12 @@ all_stores_average = universal_average(data)
 """ print(universal_average(data)) """
 
 def danger(averages, uni_average):
+    in_danger = []
     for location in averages:
-        if location.value < 0.8 
+        if averages[location] <= 0.8*uni_average:
+            in_danger.append(location)
+    return in_danger
 
+threatened_locations = danger(averages, all_stores_average)
 
-
+print(threatened_locations)
